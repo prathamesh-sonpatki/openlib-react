@@ -27,7 +27,7 @@ var App = React.createClass({
 
         <input type="text"
                defaultValue="jQuery"
-               placeHolder="Search books from open library"
+               placeholder="Search books from open library"
                onChange={this.handleChange}
         />
 
