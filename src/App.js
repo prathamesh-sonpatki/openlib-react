@@ -15,8 +15,20 @@ var App = React.createClass({
     );
   },
 
-  handleChange(value) {
-    alert(event.target.value);
+  handleChange(event) {
+    this.setState({
+      query: event.target.value}
+    );
+  },
+
+  handleSubmit(event) {
+    event.preventDefault();
+
+    if(this.state.query === '') {
+      alert('Please enter a query');
+    } else {
+      alert(this.state.query);
+    }
   },
 
   render() {
@@ -26,13 +38,13 @@ var App = React.createClass({
         <h3> Books </h3>
 
         <input type="text"
-               defaultValue="jQuery"
-               placeHolder="Search books from open library"
+               placeholder="Search books"
                onChange={this.handleChange}
         />
 
         <input type="submit"
                value="Search"
+               onClick={this.handleSubmit}
         />
 
         <BookList books={books} />
