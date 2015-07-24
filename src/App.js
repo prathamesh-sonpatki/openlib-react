@@ -1,17 +1,11 @@
 var React = require('react');
 var BookList = require('./BookList');
-
-var books = [{ name: 'jQuery in Action',
-                  author: 'John Resig',
-                  cover: 'https://covers.openlibrary.org/b/olid/OL25431312M-S.jpg'},
-                {name: 'Head first jQuery',
-                 author: 'Ryan Benedetti',
-                 cover: 'https://archive.org/download/headfirstjquery00bene/page/cover_w60_h60.jpg'}];
+var $ = require('jquery');
 
 var App = React.createClass({
   getInitialState(){
     return (
-      { query: ''}
+      { query: '', books: []}
     );
   },
 
@@ -27,7 +21,18 @@ var App = React.createClass({
     if(this.state.query === '') {
       alert('Please enter a query');
     } else {
-      alert(this.state.query);
+      var url = `http://openlibrary.org/search.json?q=${this.state.query}`;
+      $.get(url).done((data) => {
+        var data = JSON.parse(data).docs;
+
+        this.setState({
+          books: data.map((book) => {
+            return ({author: book['author_name'] && book['author_name'][0],
+                     name: book.title
+            });
+          })
+        });
+      });
     }
   },
 
@@ -47,7 +52,7 @@ var App = React.createClass({
                onClick={this.handleSubmit}
         />
 
-        <BookList books={books} />
+        <BookList books={this.state.books} />
       </div>
     );
   }
