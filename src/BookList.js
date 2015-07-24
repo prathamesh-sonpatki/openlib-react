@@ -2,11 +2,17 @@ var React = require('react');
 var Book = require('./Book');
 
 var BookList = React.createClass({
+  _logger(book) {
+    console.log(`Book name - ${book.name}`);
+  },
+
   _renderBooks(){
     return (
       this.props.books.map((book) => {
-        return <Book book={book} />;
-    }));
+        return <Book book={book}
+                     logger={this._logger} />;
+      })
+    );
   },
 
   render() {

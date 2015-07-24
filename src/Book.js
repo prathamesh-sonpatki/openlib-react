@@ -1,7 +1,13 @@
 var React = require('react');
 
 var Book = React.createClass({
+  _log() {
+    this.props.logger(this.props.book);
+  },
+
   render() {
+    this._log();
+
     return (
       <div className="book-container">
         <img src={this.props.book.cover}
