@@ -2,6 +2,10 @@ var React = require('react');
 var Book = require('./Book');
 
 var BookList = React.createClass({
+  propTypes: {
+    books: React.PropTypes.array.isRequired
+  },
+
   _logger(book) {
     console.log(`Book name - ${book.name}`);
   },
