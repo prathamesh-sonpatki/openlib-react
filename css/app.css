@@ -1,0 +1,14 @@
+.book-container {
+  marginBottom: 40;
+  height: 100;
+}
+
+.book-cover {
+    display: inline;
+    float: left;
+    margin-right: 10
+}
+
+.book-author {
+    display: inline;
+}
