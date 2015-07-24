@@ -14,7 +14,7 @@ var App = React.createClass({
       <div>
         <h1>Open Library</h1>
         <h3> Books </h3>
-        <BookList books={books[0]} />
+        <BookList books={books} />
       </div>
     );
   }

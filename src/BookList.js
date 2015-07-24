@@ -2,6 +2,12 @@ var React = require('react');
 var Book = require('./Book');
 
 var BookList = React.createClass({
+  getInitialState() {
+    return (
+      { loading: true }
+    );
+  },
+
   propTypes: {
     books: React.PropTypes.array.isRequired
   },
@@ -12,14 +18,17 @@ var BookList = React.createClass({
 
   _renderBooks(){
     return (
-      this.props.books.map((book) => {
+      this.props.books.map((book, index) => {
         return <Book book={book}
+                     key={index}
                      logger={this._logger} />;
       })
     );
   },
 
   render() {
+    console.log(this.state);
+
     return (
       <div>
         {this._renderBooks()}
