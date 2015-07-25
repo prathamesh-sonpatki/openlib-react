@@ -6,6 +6,7 @@ Code examples
 ### Usage
 
 ```
+git checkout <branch_step>
 npm install
 npm start
 open http://localhost:3000
