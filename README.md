@@ -5,6 +5,9 @@ Code examples
 
 ### Usage
 
+There are 9 steps in these exercises. We start from scratch and after
+9th step we have a simple search app using React and https://openlibrary.org/dev/docs/api/search.
+
 ```
 git checkout <branch_step>
 npm install
